@@ -1,0 +1,37 @@
+<meta charset = "utf-8">
+
+<script>
+
+function pulaLinha() {
+
+	document.write ("<br><br>");
+}
+
+function mostra (frase) {
+
+	document.write (frase);
+	pulaLinha();
+}
+
+var numeroPensado = 4; //Math.round (Math.random() * 10);
+
+var tentativas = 1;
+
+while( tentativas <=3){
+
+	var chute = parseInt(prompt("Digite um número de 0 a 10! Você tem 3 chances!"))
+
+	if(chute == numeroPensado){
+
+	mostra("<h1>Você ACERTOU, o número correto é "+ numeroPensado + "!</h1>");
+	break;
+
+	}else{
+
+	mostra("<h1>Você errou, o número pensado foi " + numeroPensado + "</h1>");
+
+	}
+
+	tentativas++
+}
+</script>

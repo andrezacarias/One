@@ -1,0 +1,55 @@
+<meta charset = "UTF-8">
+
+<script>
+
+var nomeFilhos =[];
+
+var quantidadeFilhos = parseInt(prompt("Quantos filhos você tem?"));
+
+var contador = 1;
+
+var apelidos = [];
+
+while(contador <= quantidadeFilhos){
+
+	var nomes = prompt("Nome do filho número" + contador);
+
+	var repetido = false;
+
+	for( var posicao = 0; posicao < nomeFilhos.length; posicao++){
+
+		if( nomeFilhos[posicao] == nomes) {
+
+			repetido = true;
+			alert("Esse filho já está na lista, digite outro nome!");
+			break;
+		}
+
+	//for( var posicao = 0; posicao < apelidos.length; posicao++){
+
+		if( nomeFilhos == "Alexandre") {
+
+		apelido = "Tuxo";
+			
+		}
+
+		if( nomeFilhos == "Rafael") {
+
+		apelido = "Cabeludo";
+			
+		}
+	}
+	if( repetido == false) {
+
+		nomeFilhos.push(nomes);
+//		apelidos.push(apelido);
+		contador++;
+	}
+}
+//apelido = "Gordo";
+document.write("<h1>" + nomeFilhos + "</h1>");
+document.write("<h1>" + apelido + "</h1>");
+
+console.log(nomes);
+
+</script>

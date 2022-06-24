@@ -1,0 +1,27 @@
+<meta charset = "utf-8">
+
+<script>
+
+function pulaLinha (){
+
+document.write ("<br>");
+
+}
+
+function mostra (frase) {
+
+document.write("<h1>Até o ano de " + geracaoAtual + " nosso país ja teve " + frase + " gerações de brasileiros!</h1>")
+
+}
+
+var geracaoAtual = 2022;
+var primeiraGeracao = 1500;
+var mediaGeracao = 28;
+
+frase = Math.round((geracaoAtual + primeiraGeracao)/mediaGeracao);
+
+mostra(frase);
+
+
+
+</script>
