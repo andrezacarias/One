@@ -1,45 +1,66 @@
-<canvas width="600" height="400"></canvas>
+<center><canvas width="600" height="400"></canvas></center>
 
 <script>
+
     var tela = document.querySelector('canvas');
     var pincel = tela.getContext('2d');
-
-    pincel.fillStyle = 'gray';
+    pincel.fillStyle = 'lightgray';
     pincel.fillRect(0, 0, 600, 400);
 
-    var raio = 10;
+    var x = 20;
+    var y = 20;
 
+    // códigos do teclado
 
-    function desenhaCirculo(evento) {
+    var esquerda = 37
+    var cima = 38
+    var direita = 39
+    var baixo = 40
 
-        var x = evento.pageX - tela.offsetLeft;
-        var y = evento.pageY - tela.offsetTop;
+    var taxa = 5;
 
-        console.log(x + ',' + y);
+    function desenhaCirculo(x, y, raio) {
 
-      
-        if (evento.shiftKey && raio < 40) {
-
-           raio = raio + 10;
-
-        } else if(evento.altKey && raio - 5 >= 10) {
-            
-            raio = raio - 5;
-
-        }
-
-        
-
-
-        pincel.fillStyle = 'blue';
+        pincel.fillStyle = 'red';
         pincel.beginPath();
-        pincel.arc(x, y, raio, 0, 2 * 3.14);
+        pincel.arc(x, y, raio, 0, 2 * Math.PI);
         pincel.fill();
-
     }
 
-    
+    function limpaTela() {
 
-    tela.onclick = desenhaCirculo;
+        pincel.clearRect(0, 0, 600, 400);
+    }
+
+
+    function atualizaTela() {
+
+        limpaTela();
+        desenhaCirculo(x, y, 25);
+    }
+
+    setInterval(atualizaTela, 20);
+
+    function leDoTeclado(evento) {
+
+        if(evento.keyCode == cima) {
+
+            y = y - taxa;
+
+        } else if (evento.keyCode == baixo) {
+
+            y = y + taxa;
+
+        } else if (evento.keyCode == esquerda) {
+
+            x = x - taxa;
+
+        } else if (evento.keyCode == direita) {
+
+            x = x + taxa;
+        }
+    }
+
+   document.onkeydown = leDoTeclado;
 
 </script>

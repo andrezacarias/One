@@ -1,52 +1,51 @@
-<canvas width="600" height="400"></canvas>
+<canvas width="1000" height="400"></canvas>
 
 <script>
+
     var tela = document.querySelector('canvas');
     var pincel = tela.getContext('2d');
+    pincel.fillStyle = 'lightgray';
+    pincel.fillRect(0, 0, 1000, 400);
 
-    pincel.fillStyle = 'grey';
-    pincel.fillRect(0, 0, 600, 400);
+    function desenhaCirculo(x, y, raio) {
 
-    var cores = ['blue' , 'red' , 'green'];
-    var indiceCorAtual = 0; //cor igual a blue!
-
-    function desenhaCirculo(evento) {
-
-        var x = evento.pageX - tela.offsetLeft;
-        var y = evento.pageY - tela.offsetTop;
-
-        var raio = 10;
-
-        console.log(x + ',' + y);
-
-        if (evento.shiftKey) {
-
-           raio = raio + 20; // raio agora passa a valer 30!
-        }
-
-        pincel.fillStyle = cores[indiceCorAtual];
+        pincel.fillStyle = 'blue';
         pincel.beginPath();
-        pincel.arc(x, y, raio, 0, 2 * 3.14);
+        pincel.arc(x, y, raio, 0, 2 * Math.PI);
         pincel.fill();
-
+    }
+    for(i = 0; i<10; i++){
+   function limpaTela() {
+    pincel.clearRect(0, 0, 1000, 400);
     }
 
-    tela.onclick = desenhaCirculo;
+    var x = 20;
+    var y = 10;
+    var stop = 0;
 
-    function mudaCor() {
+    function atualizaTela()
+    {
 
-        indiceCorAtual++;
+     if(y<400 && stop==0){
 
-        if(indiceCorAtual >= cores.length){
-            indiceCorAtual = 0; // volta para primeira cor, azul
-        }
+            limpaTela();
+            desenhaCirculo(x, y, 10);
+            x++;
+            y++;
 
-      
-        alert('A cor mudou para ' + indiceCorAtual);
-        
-        return false;// para não exibir o menu padrão do canvas
+            }else{
+                stop=1;
+                limpaTela();
+            desenhaCirculo(x, y, 10);
+            x++;
+            y--;
+            }
+       
     }
 
-    tela.oncontextmenu = mudaCor;
+    
+    
+    setInterval(atualizaTela, 30);
+    }
 
 </script>
