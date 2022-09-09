@@ -1,0 +1,16 @@
+<input class="frase"><button class="botao">Copiar</button>
+<center><span style="font-size: 50px; color: blueviolet;" class="copia"></span></center>
+
+<script>
+    var inputFrase = document.querySelector('.frase');
+    var botao = document.querySelector('.botao');
+    var copia = document.querySelector('.copia');
+
+function botaoHandler() {
+    copia.textContent = inputFrase.value;
+    inputFrase.value = '';
+}
+
+botao.addEventListener('click', botaoHandler);
+ </script>
+ 
