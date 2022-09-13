@@ -30,6 +30,8 @@ botaoAdicionar.addEventListener("click", function(event){
 
     tabela.appendChild(pacienteTr);
 
+    adicionaPacienteNaTabela(paciente);
+
     form.reset();
     
     var mensagensErro = document.querySelector("#mensagens-erro");
@@ -70,6 +72,12 @@ function montaTd(dado, classe){
     td.textContent = dado;
     td.classList.add(classe);
     return td;
+}
+
+function adicionaPacienteNaTabela(paciente) {
+    var pacienteTr = montaTr(paciente);
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
 }
 
 function exibeMensagensDeErro(erros){
